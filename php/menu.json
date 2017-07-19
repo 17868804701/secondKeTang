@@ -1,0 +1,131 @@
+{
+    "data": {
+        "list": [{
+          "id": 1,
+          "url": "",
+          "name": "系统管理",
+          "iconfont": "&#xe613;",
+          "sub": [
+            {
+              "id": 5,
+              "url": "",
+              "name": "权限管理",
+              "iconfont": "&#xe637;"
+            },
+            {
+              "id": 6,
+              "url": "",
+              "name": "数据预置",
+              "iconfont": "&#xe637;"
+            },
+            {
+              "id": 7,
+              "url": "",
+              "name": "系统日志",
+              "iconfont": "&#xe637;"
+            },
+            {
+              "id": 7,
+              "url": "",
+              "name": "数据备份",
+              "iconfont": "&#xe637;"
+            }
+          ]
+        },
+            {
+                "id": 2,
+                "url": "",
+                "name": "活动分类",
+                "iconfont": "&#xe631;",
+                "sub": [{
+                        "id":8,
+                        "url": "product.html",
+                        "name": "活动类别设定",
+                        "iconfont": "&#xe61a;",
+                        "sub": []
+                    },
+                    {
+                        "id": 9,
+                        "url": "brand.html",
+                        "name": "活动条件设定",
+                        "iconfont": "&#xe60d;",
+                        "sub": []
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "url": "",
+                "name": "活动管理",
+                "iconfont": "&#xe672;",
+                "sub": [
+                  {
+                    "id": 10,
+                    "url": "../html/actvityRelease.html",
+                    "name": "活动发布",
+                    "iconfont": "&#xe672;"
+                  },
+                  {
+                    "id": 11,
+                    "url": "../html/actvityBaoming.html",
+                    "name": "活动报名",
+                    "iconfont": "&#xe672;"
+                  },
+                  {
+                    "id": 12,
+                    "url": "",
+                    "name": "活动过程",
+                    "iconfont": "&#xe672;"
+                  }
+
+                ]
+            },
+            {
+                "id": 4,
+                "url": "",
+                "name": "学分认定",
+                "iconfont": "&#xe689;",
+                "sub": [
+                  {
+                        "id": 13,
+                        "url": "../html/apply.html",
+                        "name": "申请学分",
+                        "iconfont": "&#xe646;"
+                  },
+                  {
+                    "id": 14,
+                    "url": "",
+                    "name": "学分认定",
+                    "iconfont": "&#xe646;"
+                  },
+                  {
+                    "id": 15,
+                    "url": "../html/courseNum.html",
+                    "name": "学分统计与预警",
+                    "iconfont": "&#xe646;"
+                  }
+                ]
+            },{
+            "id": 1,
+            "url": "",
+            "name": "信息统计",
+            "iconfont": "&#xe613;",
+            "sub": [
+              {
+                "id": 5,
+                "url": "../html/selectInfo.html",
+                "name": "第二课堂活动信息查询统计",
+                "iconfont": "&#xe637;"
+              },
+              {
+                "id": 6,
+                "url": "../html/import.html",
+                "name": "第二课堂活动信息数据导出",
+                "iconfont": "&#xe637;"
+              }
+            ]
+          }
+        ]
+    },
+    "status": 200
+}

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动报名</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.3.3" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/webuploader.css" media="all">
+    <style>
+        label{
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid larry-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <section class="panel panel-padding">
+                <form id="form1" class="layui-form layui-form-pane">
+
+                    <input type="hidden" name="processId" value="${processId }" />
+                    <input type="hidden" name="orderId" value="${orderId }" />
+                    <input type="hidden" name="taskId" value="${taskId }" />
+                    <input id="clUrl" type="hidden" name="clUrl" value="" />
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">申请人</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="operator" readonly jq-verify="operator" class="layui-input" value="" placeholder="申请人" />
+                            <input type="hidden" name="bossOperator" readonly  value="${bossOperator}" />
+                            <input type="hidden" name="endOperator"  readonly value="${endOperator}" />
+
+                            <input id ="mkName" type="hidden" name="mkName"  />
+                            <input id="xmName" type="hidden" name="xmName"  />
+                            <input id="jbName" type="hidden" name="jbName" />
+
+                        </div>
+
+                        <div class="layui-inline" style="margin-left: 13px">
+                            <label class="layui-form-label">参考版本</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="version" readonly class="layui-input" value="" placeholder="参考版本" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">模块</label>
+                            <div class="layui-input-inline">
+                                <select id="mkId" name="mkId" required lay-verify="required" jq-error="请输入模块" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/xmSelect","data":"","confirm":"true","loading":"false","complete":"initXm"}'>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">项目</label>
+                            <div class="layui-input-inline">
+                                <select id="xmId" name="xmId" required lay-verify="required" jq-error="请输入项目" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/jbSelect","data":"","confirm":"true","loading":"false","complete":"initJb"}'>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">级别</label>
+                            <div class="layui-input-inline">
+                                <select id="jbId" name="jbId" required lay-verify="required" jq-error="请输入级别" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/xfSelect","data":"","confirm":"true","loading":"false","complete":"initXf"}'>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">分数</label>
+                            <div class="layui-input-inline" id="tsStartXf">
+                                <select id="startXf" name="startXf" required lay-verify="required" jq-error="请输入分数" >
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">活动类别</label>
+                            <div class="layui-input-inline">
+                                <select name="startXf" required lay-verify="required" jq-error="请输入分数" >
+                                    <option value="">人文素养</option>
+                                    <option value="">人文素养</option>
+                                    <option value="">人文素养</option>
+                                    <option value="">人文素养</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">获奖等级</label>
+                            <div class="layui-input-inline">
+                                <select name="startXf" required lay-verify="required" jq-error="请输入分数" >
+                                    <option value="">一级</option>
+                                    <option value="">二级</option>
+                                    <option value="">三级</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">排名情况</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="version" class="layui-input" value="" placeholder="排名" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="layui-form-item ">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                            <textarea name="description" required lay-verify="required" placeholder="请输入描述" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">上传图片</label>
+                        <div class="layui-input-block">
+                            <div id="uploader" class="wu-example">
+                                <div class="queueList">
+                                    <div id="dndArea" class="placeholder">
+                                        <div id="filePicker"></div>
+                                        <p>或将图片拖到这里，单次最多可选30张</p>
+                                    </div>
+                                </div>
+                                <div class="statusBar" style="display:none;">
+                                    <div class="progress">
+                                        <span class="text">0%</span>
+                                        <span class="percentage"></span>
+                                    </div>
+                                    <div class="info"></div>
+                                    <div class="btns">
+                                        <div id="filePicker2"></div>
+                                        <div class="uploadBtn">开始上传</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: 'js/',
+        version: "1.3.3"
+    }).extend({
+        elem: 'jqmodules/elem',
+        tabmenu: 'jqmodules/tabmenu',
+        jqmenu: 'jqmodules/jqmenu',
+        ajax: 'jqmodules/ajax',
+        dtable: 'jqmodules/dtable',
+        jqdate: 'jqmodules/jqdate',
+        modal: 'jqmodules/modal',
+        tags: 'jqmodules/tags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader'
+    })
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form()
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            });
+            return false;
+        });
+
+
+    });
+</script>
+<script>
+    layui.use(['product','ajax'],function(){
+            var ajax = layui.ajax;
+            var form = layui.form();
+            var layer= layui.layer;
+            initMk();
+            ajax.initXm = function(ret, options, that) {
+                cleanXm();
+                cleanJb();
+                if(ret.status == 200){
+                    $("#mkName").val($("#mkId  option:selected").text());
+                    $.each(ret.list,function(index,value){
+                        $("#xmId").append("<option value='"+value.xm_id+"'>"+value.xm_name+"</option>");
+                        $("#form1").append("<input type='hidden' id='xm_"+value.xm_id+"' value='"+value.xm_type+"' />");
+                    });
+                    form.render('select');//重新渲染
+
+                }else{
+                    alert("查询失败");
+                }
+
+            }
+            ajax.initJb = function(ret, options, that) {
+                cleanJb();
+                if(ret.status == 200){
+                    $("#xmName").val($("#xmId  option:selected").text());
+                    $.each(ret.list,function(index,value){
+                        $("#jbId").append("<option value='"+value.jb_id+"'>"+value.jb_name+"</option>");
+                    });
+                    form.render('select');//重新渲染
+
+                }else{
+                    alert("查询失败");
+                }
+
+            }
+            ajax.initXf = function(ret, options, that) {
+                var xmId =$("#xmId").val();
+                var xmType = $("#xm_"+xmId).val();
+                if(xmType == 0){
+                    $("#startXf").empty();
+                    if(ret.status == 200){
+                        $("#jbName").val($("#jbId  option:selected").text());
+                        $.each(ret.list,function(index,value){
+                            $("#startXf").append("<option value='"+value.yq_xf+"'>"+value.yq_xf+"</option>");
+                        });
+                        form.render();//重新渲染
+                    }else{
+                        alert("查询失败");
+                    }
+                }else{
+                    $("#tsStartXf").empty();
+                    var maxXf = ret.list[0].yq_xf;
+                    $("#tsStartXf").append("<input type='text' name='startXf' required lay-verify='required' class='layui-input' placeholder='请输入分数，最多为"+maxXf+"' />");
+                }
+
+            }
+
+            //监听提交
+            form.on('submit(submit)', function(data){
+                // layer.msg(JSON.stringify(data.field));
+
+                $.post('${contextPath}/flow/secClassRoom/startProcess',data.field,function(result){
+                    if(result.status == 200){
+                        layer.alert('提交成功！您可以进行新的申请', function(){
+                            parent.location.href=parent.location.href
+                        });
+                    }else{
+                        layer.msg('提交失败!请重新申请')
+                    }
+                });
+
+                return false;
+            });
+        }
+    );
+    function initMk() {
+        $.post('${contextPath}/flow/secClassRoom/mkSelect','version=${version}',function(data){
+            if(data.status == 200){
+                var form = layui.form();
+                $.each(data.list,function(index,value){
+                    $("#mkId").append("<option value='"+value.mk_id+"'>"+value.mk_name+"</option>");
+                });
+                form.render('select');//重新渲染
+
+            }else{
+                alert("查询失败");
+            }
+        })
+    }
+
+    function cleanXm() {
+        $("#xmId").empty();
+        $("#xmId").append("<option value=''>请选择</option>");
+    }
+    function cleanJb() {
+        $("#jbId").empty();
+        $("#jbId").append("<option value=''>请选择</option>");
+
+        $("#tsStartXf").empty();
+        $("#tsStartXf").append("<select id='startXf' name='startXf' required lay-verify='required'" +
+            " jq-error='请输入分数' > <option value=''></option> </select>");
+    }
+</script>
+<script>
+    layui.use(['layedit','product'], function(){
+        var layedit = layui.layedit
+            ,$ = layui.jquery;
+
+        //构建一个默认的编辑器
+        var index = layedit.build('LAY_demo1');
+
+        //编辑器外部操作
+        var active = {
+            content: function(){
+                alert(layedit.getContent(index)); //获取编辑器内容
+            }
+            ,text: function(){
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            ,selection: function(){
+                alert(layedit.getSelection(index));
+            }
+        };
+
+        $('.site-demo-layedit').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //自定义工具栏
+        layedit.build('LAY_demo2', {
+            tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+            ,height: 100
+        })
+    });
+</script>
+
+<script>
+    layui.use('list');
+</script>
+
+</html>

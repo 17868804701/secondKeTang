@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>发布活动</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.3.3" media="all">
+    <style>
+        label{
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <!--发布活动表单-->
+                <section class="panel panel-padding">
+                    <form id="form" class="layui-form layui-form-pane">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">活动名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="活动名称" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline" style="margin-bottom: 20px">
+                            <label class="layui-form-label">活动时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-mm-dd" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline" style="margin-bottom: 20px">
+                            <label class="layui-form-label">所属部门</label>
+                            <div class="layui-input-inline">
+                                <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">选择部门</option>
+                                    <option value="1">分院</option>
+                                    <option value="2">社区</option>
+                                    <option value="3">学生处</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline" style="margin-bottom: 20px">
+                            <label class="layui-form-label">活动分类</label>
+                            <div class="layui-input-inline">
+                                <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="">选择活动分类</option>
+                                    <option value="1">基本素养</option>
+                                    <option value="2">就业创业</option>
+                                    <option value="3">学科竞赛</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline" style="margin-bottom: 20px">
+                            <label class="layui-form-label">学分设定</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="number" placeholder="学分" lay-verify="required|number" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <textarea class="layui-textarea" id="LAY_demo1" style="display: none;">
+                              请输入活动详细内容
+                        </textarea>
+
+                        <div class="layui-form-item layui-form-text" style="margin-top: 20px">
+                            <label class="layui-form-label">活动说明</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入活动说明" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn">发布活动</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: 'js/',
+        version: "1.3.3"
+    }).extend({
+        elem: 'jqmodules/elem',
+        tabmenu: 'jqmodules/tabmenu',
+        jqmenu: 'jqmodules/jqmenu',
+        ajax: 'jqmodules/ajax',
+        dtable: 'jqmodules/dtable',
+        jqdate: 'jqmodules/jqdate',
+        modal: 'jqmodules/modal',
+        tags: 'jqmodules/tags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader'
+    })
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form()
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            });
+            return false;
+        });
+
+
+    });
+</script>
+<script>
+    layui.use('layedit', function(){
+        var layedit = layui.layedit
+            ,$ = layui.jquery;
+
+        //构建一个默认的编辑器
+        var index = layedit.build('LAY_demo1');
+
+        //编辑器外部操作
+        var active = {
+            content: function(){
+                alert(layedit.getContent(index)); //获取编辑器内容
+            }
+            ,text: function(){
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            ,selection: function(){
+                alert(layedit.getSelection(index));
+            }
+        };
+
+        $('.site-demo-layedit').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //自定义工具栏
+        layedit.build('LAY_demo2', {
+            tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+            ,height: 100
+        })
+    });
+</script>
+
+<script>
+    layui.use('list');
+</script>
+
+</html>
