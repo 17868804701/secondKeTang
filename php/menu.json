@@ -39,7 +39,7 @@
                 "iconfont": "&#xe631;",
                 "sub": [{
                         "id":8,
-                        "url": "product.html",
+                        "url": "../html/activityType.html",
                         "name": "活动类别设定",
                         "iconfont": "&#xe61a;",
                         "sub": []

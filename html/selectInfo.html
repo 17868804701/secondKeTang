@@ -52,7 +52,13 @@
                             </div>
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
-                                    <input class="layui-input start-date" name="start_date" placeholder="年级">
+                                    <select name="startXf" required lay-verify="required" jq-error="请选择年级" >
+                                        <option value="">选择年级</option>
+                                        <option value="1">2013级</option>
+                                        <option value="2">2014级</option>
+                                        <option value="3">2015级</option>
+                                        <option value="4">2016级</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="layui-inline">
@@ -70,17 +76,17 @@
 
                 <!--列表-->
                 <section class="panel panel-padding">
-                    <div class="group-button">
-                        <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=ni&checkbox=6,9,0&va=23"}'>
-                            <i class="iconfont">&#xe626;</i> 删除
-                        </button>
-                        <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=hao&checkbox=6,9,0&va=23"}'>
-                            <i class="iconfont">&#xe603;</i> 添加
-                        </button>
-                        <button class="layui-btn layui-btn-small modal-iframe" data-params='{"content": "product-add.html", "title": "添加文章","full":"true"}'>
-                            <i class="iconfont">&#xe649;</i> 添加
-                        </button>
-                    </div>
+                    <!--<div class="group-button">-->
+                        <!--<button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=ni&checkbox=6,9,0&va=23"}'>-->
+                            <!--<i class="iconfont">&#xe626;</i> 删除-->
+                        <!--</button>-->
+                        <!--<button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=hao&checkbox=6,9,0&va=23"}'>-->
+                            <!--<i class="iconfont">&#xe603;</i> 添加-->
+                        <!--</button>-->
+                        <!--<button class="layui-btn layui-btn-small modal-iframe" data-params='{"content": "product-add.html", "title": "添加文章","full":"true"}'>-->
+                            <!--<i class="iconfont">&#xe649;</i> 添加-->
+                        <!--</button>-->
+                    <!--</div>-->
                     <div id="list" class="layui-form">
                         <table id="example" class="layui-table lay-even" style="color: #333">
                             <thead>

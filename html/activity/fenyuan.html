@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQadmin后台模板</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css?v1.3.3" media="all">
+
+</head>
+
+<body>
+<div class="container-fluid larry-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <!--头部搜索-->
+            <section class="panel panel-padding">
+                <form class="layui-form">
+                    <div class="layui-form">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input class="layui-input" name="keyword" placeholder="关键字">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button lay-submit class="layui-btn" lay-filter="search">查找</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!--列表-->
+            <section class="panel panel-padding">
+                <div class="group-button">
+                    <button class="layui-btn layui-btn-small modal-iframe" data-params='{"content": "product-add.html", "title": "添加文章","full":"true"}'>
+                        <i class="iconfont">&#xe649;</i> 添加
+                    </button>
+                </div>
+                   <div id="list" class="layui-form">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="20">
+                                <col width="170">
+                                <col width="170">
+                                <col width="170">
+                                <col width="200">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+                                <th>分院</th>
+                                <th>活动目标</th>
+                                <th>是否启用</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="" lay-skin="primary"></td>
+                                <td>信息工程学院</td>
+                                <td>全院学生</td>
+                                <td>
+                                    <div class="layui-inline">
+                                        <div class="layui-input-inline">
+                                            <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="layui-btn layui-btn-small modal-iframe" data-params='{"content": "product-add.html", "title": "添加文章","full":"true"}'>
+                                        <i class="iconfont">&#xe649;</i> 编辑
+                                    </button>
+                                    <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=ni&checkbox=6,9,0&va=23"}'>
+                                        <i class="iconfont">&#xe626;</i> 删除
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" lay-skin="primary"></td>
+                                <td>人文教育学院</td>
+                                <td>全院学生</td>
+                                <td>
+                                    <div class="layui-inline">
+                                        <div class="layui-input-inline">
+                                            <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="layui-btn layui-btn-small modal-iframe" data-params='{"content": "product-add.html", "title": "添加文章","full":"true"}'>
+                                        <i class="iconfont">&#xe649;</i> 编辑
+                                    </button>
+                                    <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=ni&checkbox=6,9,0&va=23"}'>
+                                        <i class="iconfont">&#xe626;</i> 删除
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <div class="text-right" id="page"></div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: 'js/',
+        version: "1.3.3"
+    }).extend({
+        elem: 'jqmodules/elem',
+        tabmenu: 'jqmodules/tabmenu',
+        jqmenu: 'jqmodules/jqmenu',
+        ajax: 'jqmodules/ajax',
+        dtable: 'jqmodules/dtable',
+        jqdate: 'jqmodules/jqdate',
+        modal: 'jqmodules/modal',
+        tags: 'jqmodules/tags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader'
+    })
+</script>
+<script>
+    layui.use('form', function(){
+        var $ = layui.jquery, form = layui.form();
+
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+        });
+
+    });
+</script>
+<script>
+    layui.use('list');
+</script>
+
+</html>

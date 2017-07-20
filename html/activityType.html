@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动类别设定</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.3.3" media="all">
+    <style>
+        label{
+            color: #333;
+        }
+        /*body{*/
+            /*height: 634px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div style="display: inline-block; width: 20%;margin-top: 10px; padding: 10px; overflow: auto;border: 0px solid red;float: left">
+    <ul id="demo1"></ul>
+</div>
+<div class="layui-tab-content" style="width: 80%;float: left;margin-top: 0px;background-color: white;height: 100%">
+    <div class="layui-tab-item layui-show" style="width: 100%;height: 100%">
+        <iframe class="jqadmin-iframe" data-id='0' name="tree" src="activity/ouya.html" width="100%" height="100%" frameborder="0" scrolling="0"></iframe>
+    </div>
+</div>
+</body>
+<script src="../js/layui/layui.js"></script>
+<script>
+    //Demo
+    layui.use(['tree', 'layer'], function(){
+        var layer = layui.layer
+            ,$ = layui.jquery;
+
+        layui.tree({
+            elem: '#demo1' //指定元素
+            ,target: 'tree' //是否新选项卡打开（比如节点返回href才有效）
+            ,click: function(item){ //点击节点回调
+//                layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
+                console.log(item);
+            }
+            ,nodes: [ //节点
+                {
+                    name: '西安欧亚学院'
+                    ,id: 2
+                    ,href:'activity/ouya.html'
+                    ,spread: true
+                    ,children: [
+                        {
+                            name: '分院活动'
+                            ,id: 22
+                            ,href:'activity/fenyuan.html'
+                            ,spread: true
+                            ,children:[
+                            {
+                                name: '信息工程学院'
+                                ,id: 121
+                                ,href:'activity/fenyuan_node.html'
+                                ,children:[
+                                {
+                                    name: '就业创业'
+                                    ,id: 122
+                                }
+                                ,{
+                                    name: '学科竞赛'
+                                    ,id: 122
+                                }
+                                ,{
+                                    name: '基本素养'
+                                    ,id: 122
+                                }
+                            ]
+                            },
+                            {
+                                name: '人文教育学院'
+                                ,id: 121
+                                ,spread: true
+                                ,children:[
+                                {
+                                    name: '就业创业'
+                                    ,id: 122
+                                }
+                                ,{
+                                    name: '学科竞赛'
+                                    ,id: 122
+                                }
+                                ,{
+                                    name: '基本素养'
+                                    ,id: 122
+                                }
+                            ]
+                            }
+                             ]
+                        },
+                    {
+                        name: '社区活动'
+                        ,id: 22
+                        ,spread: true
+                        ,children:[
+                        {
+                            name: '第一青年社区'
+                            ,id: 121
+                            ,children:[
+                            {
+                                name: '就业创业'
+                                ,id: 122
+                            }
+                            ,{
+                                name: '学科竞赛'
+                                ,id: 122
+                            }
+                            ,{
+                                name: '基本素养'
+                                ,id: 122
+                            }
+                        ]
+                        },
+                        {
+                            name: '第二青年社区'
+                            ,id: 121
+                            ,children:[
+                            {
+                                name: '就业创业'
+                                ,id: 122
+                            }
+                            ,{
+                                name: '学科竞赛'
+                                ,id: 122
+                            }
+                            ,{
+                                name: '基本素养'
+                                ,id: 122
+                            }
+                        ]
+                        }
+                    ]
+                    }
+                    ]
+                }
+            ]
+        });
+        var height = $(window).height();
+        $("body").css("height",height);
+        //生成一个模拟树
+        var createTree = function(node, start){
+            node = node || function(){
+                    var arr = [];
+                    for(var i = 1; i < 10; i++){
+                        arr.push({
+                            name: i.toString().replace(/(\d)/, '$1$1$1$1$1$1$1$1$1')
+                        });
+                    }
+                    return arr;
+                }();
+            start = start || 1;
+            layui.each(node, function(index, item){
+                if(start < 10 && index < 9){
+                    var child = [
+                        {
+                            name: (1 + index + start).toString().replace(/(\d)/, '$1$1$1$1$1$1$1$1$1')
+                        }
+                    ];
+                    node[index].children = child;
+                    createTree(child, index + start + 1);
+                }
+            });
+            return node;
+        };
+
+        layui.tree({
+            elem: '#demo2' //指定元素
+            ,nodes: createTree()
+        });
+
+    });
+</script>
+</html>
