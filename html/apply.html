@@ -38,13 +38,6 @@
                         <label class="layui-form-label">申请人</label>
                         <div class="layui-input-inline">
                             <input type="text" name="operator" readonly jq-verify="operator" class="layui-input" value="" placeholder="申请人" />
-                            <input type="hidden" name="bossOperator" readonly  value="${bossOperator}" />
-                            <input type="hidden" name="endOperator"  readonly value="${endOperator}" />
-
-                            <input id ="mkName" type="hidden" name="mkName"  />
-                            <input id="xmName" type="hidden" name="xmName"  />
-                            <input id="jbName" type="hidden" name="jbName" />
-
                         </div>
 
                         <div class="layui-inline" style="margin-left: 13px">
@@ -83,42 +76,18 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="layui-inline">
-                            <label class="layui-form-label">分数</label>
-                            <div class="layui-input-inline" id="tsStartXf">
-                                <select id="startXf" name="startXf" required lay-verify="required" jq-error="请输入分数" >
+                            <label class="layui-form-label">要求</label>
+                            <div class="layui-input-inline">
+                                <select id="jbId" name="jbId" required lay-verify="required" jq-error="请输入级别" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/xfSelect","data":"","confirm":"true","loading":"false","complete":"initXf"}'>
                                     <option value=""></option>
                                 </select>
                             </div>
                         </div>
-
                         <div class="layui-inline">
-                            <label class="layui-form-label">活动类别</label>
+                            <label class="layui-form-label">学分数</label>
                             <div class="layui-input-inline">
-                                <select name="startXf" required lay-verify="required" jq-error="请输入分数" >
-                                    <option value="">人文素养</option>
-                                    <option value="">人文素养</option>
-                                    <option value="">人文素养</option>
-                                    <option value="">人文素养</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="layui-inline">
-                            <label class="layui-form-label">获奖等级</label>
-                            <div class="layui-input-inline">
-                                <select name="startXf" required lay-verify="required" jq-error="请输入分数" >
-                                    <option value="">一级</option>
-                                    <option value="">二级</option>
-                                    <option value="">三级</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">排名情况</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="version" class="layui-input" value="" placeholder="排名" />
+                                <input type="text" name="version" readonly class="layui-input" value="" placeholder="学分" />
                             </div>
                         </div>
 

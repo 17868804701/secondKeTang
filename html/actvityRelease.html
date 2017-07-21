@@ -36,13 +36,6 @@
                         </div>
 
                         <div class="layui-inline" style="margin-bottom: 20px">
-                            <label class="layui-form-label">活动时间</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-mm-dd" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
-                            </div>
-                        </div>
-
-                        <div class="layui-inline" style="margin-bottom: 20px">
                             <label class="layui-form-label">所属部门</label>
                             <div class="layui-input-inline">
                                 <select name="modules" lay-verify="required" lay-search="">
@@ -73,14 +66,36 @@
                             </div>
                         </div>
 
-                        <textarea class="layui-textarea" id="LAY_demo1" style="display: none;">
-                              请输入活动详细内容
-                        </textarea>
 
-                        <div class="layui-form-item layui-form-text" style="margin-top: 20px">
+                        <div class="layui-inline" style="margin-bottom: 20px">
+                            <label class="layui-form-label">活动时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="date"  lay-verify="date" placeholder="2017-10-01" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                            </div>
+                            -
+                            <div class="layui-input-inline">
+                                <input type="text" name="date"  lay-verify="date" placeholder="2017-12-01" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="layui-inline" style="margin-bottom: 20px;">
+                            <label class="layui-form-label">报名时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="date"  lay-verify="date" placeholder="2017-9-01" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                            </div>
+                            -
+                            <div class="layui-input-inline">
+                                <input type="text" name="date"  lay-verify="date" placeholder="2017-9-20" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                            </div>
+                        </div>
+                        <!--<textarea class="layui-textarea" id="LAY_demo1" style="display: none;">-->
+                              <!--请输入活动详细内容-->
+                        <!--</textarea>-->
+
+                        <div class="layui-form-item layui-form-text">
                             <label class="layui-form-label">活动说明</label>
                             <div class="layui-input-block">
-                                <textarea placeholder="请输入活动说明" class="layui-textarea"></textarea>
+                                <textarea placeholder="请输入活动说明" style="height: 250px" class="layui-textarea"></textarea>
                             </div>
                         </div>
 

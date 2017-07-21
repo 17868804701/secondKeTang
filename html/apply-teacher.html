@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动报名</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.3.3" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/webuploader.css" media="all">
+    <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <style>
+        label{
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid larry-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <section class="panel panel-padding">
+                <form id="form1" class="layui-form layui-form-pane">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">申请人</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="operator" readonly jq-verify="operator" class="layui-input" value="" placeholder="申请人" />
+                            <input type="hidden" name="bossOperator" readonly  value="${bossOperator}" />
+                            <input type="hidden" name="endOperator"  readonly value="${endOperator}" />
+                            <input id ="mkName" type="hidden" name="mkName"  />
+                            <input id="xmName" type="hidden" name="xmName"  />
+                            <input id="jbName" type="hidden" name="jbName" />
+                        </div>
+                        <div class="layui-inline" style="margin-left: 13px">
+                            <label class="layui-form-label">项目名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="version" readonly class="layui-input" value="" placeholder="项目名称" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="margin-bottom: 10px;">
+                        <label class="layui-form-label">起止时间</label>
+                        <div class="layui-input-inline" style="width: 190px">
+                            <input type="text" name="date"  lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                        </div>
+                        &nbsp;-
+                        <div class="layui-input-inline" style="width: 190px;margin-left: 8px">
+                            <input type="text" name="date"  lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+                        </div>
+                    </div>
+                    <a class="layui-btn layui-btn-small" style="float: right;margin-right: 20px;margin-top: 20px" id="add">
+                        添加一行
+                    </a>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="70">
+                            <col width="100">
+                            <col width="100">
+                            <col width="100">
+                            <col width="180">
+                            <col width="80">
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>学号</th>
+                            <th>班级</th>
+                            <th>申请学分</th>
+                            <th>认定原因</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="add_info">
+                        <tr>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="姓名" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="学号" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="班级" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="申请学分" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="认定原因" />
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="layui-form-item" style="margin-left: -90px;margin-top: 20px">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: 'js/',
+        version: "1.3.3"
+    }).extend({
+        elem: 'jqmodules/elem',
+        tabmenu: 'jqmodules/tabmenu',
+        jqmenu: 'jqmodules/jqmenu',
+        ajax: 'jqmodules/ajax',
+        dtable: 'jqmodules/dtable',
+        jqdate: 'jqmodules/jqdate',
+        modal: 'jqmodules/modal',
+        tags: 'jqmodules/tags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader'
+    })
+</script>
+<script>
+    layui.use(['form', 'layedit', 'jquery','laydate'], function(){
+        var form = layui.form()
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            });
+            return false;
+        });
+
+        var str = `<tr>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="姓名" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="学号" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="班级" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="申请学分" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="version"  class="layui-input" value="" placeholder="认定原因" />
+                                </div>
+                            </td>
+                            <td>
+                                <a class="layui-btn layui-btn-small layui-btn-normal delete" onclick="$(this).parent().parent().remove()" style="background-color:#FF6838"><i class="layui-icon"></i> 删除</a>
+                            </td>
+                      </tr>`;
+        $("#add").click(function () {
+            $("#add_info").append(str);
+        });
+    });
+</script>
+
+<script>
+    layui.use('list');
+</script>
+
+</html>

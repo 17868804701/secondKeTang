@@ -43,13 +43,6 @@
                         "name": "活动类别设定",
                         "iconfont": "&#xe61a;",
                         "sub": []
-                    },
-                    {
-                        "id": 9,
-                        "url": "brand.html",
-                        "name": "活动条件设定",
-                        "iconfont": "&#xe60d;",
-                        "sub": []
                     }
                 ]
             },
@@ -91,6 +84,12 @@
                         "url": "../html/apply.html",
                         "name": "申请学分",
                         "iconfont": "&#xe646;"
+                  },
+                  {
+                    "id": 13,
+                    "url": "../html/apply-teacher.html",
+                    "name": "特殊申请(老师)",
+                    "iconfont": "&#xe646;"
                   },
                   {
                     "id": 14,
