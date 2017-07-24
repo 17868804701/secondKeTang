@@ -92,12 +92,6 @@
                     "iconfont": "&#xe646;"
                   },
                   {
-                    "id": 14,
-                    "url": "",
-                    "name": "学分认定",
-                    "iconfont": "&#xe646;"
-                  },
-                  {
                     "id": 15,
                     "url": "../html/courseNum.html",
                     "name": "学分统计与预警",
