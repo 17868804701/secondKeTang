@@ -11,37 +11,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <!-- load css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css?v=v3.3.7" media="all">
-    <link rel="stylesheet" type="text/css" href="css/font/iconfont.css?v=1.0.0" media="all">
-    <link rel="stylesheet" type="text/css" href="css/layui.css?v=1.0.9" media="all">
-    <link rel="stylesheet" type="text/css" href="css/main.css?v1.3.3" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.3.3" media="all">
 
 </head>
-
 <body>
     <div class="container-fluid larry-wrapper">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <!--头部搜索-->
                 <section class="panel panel-padding">
-                    <form class="layui-form" action="./php/data.php">
+                    <form class="layui-form" action="../php/data.php">
                         <div class="layui-form">
-                            <div class="layui-inline">
-                                <select name="city" lay-verify="required">
-                                    <option value="0">请选择地区</option>
-                                    <option value="010">北京</option>
-                                    <option value="021">上海</option>
-                                    <option value="0571">杭州</option>
-                                </select>
-                            </div>
-                            <div class="layui-inline">
-                                <div class="layui-input-inline">
-                                    <input class="layui-input start-date" name="start_date" placeholder="注册时间">
-                                </div>
-                                <div class="layui-input-inline">
-                                    <input class="layui-input end-date" name="end_date" placeholder="注册时间">
-                                </div>
-                            </div>
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
                                     <input class="layui-input" name="keyword" placeholder="关键字">
@@ -60,10 +43,11 @@
                         <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=ni&checkbox=6,9,0&va=23"}'>
                             <i class="iconfont">&#xe626;</i> 删除
                         </button>
+
                         <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=hao&checkbox=6,9,0&va=23"}'>
-                            <i class="layui-icon">&#x1005;</i> 审核
+                            <i class="layui-icon">&#x1005;</i> 状态
                         </button>
-                        <button class="layui-btn layui-btn-small modal-catch" data-params='{"content": ".add-subcat", "title": "添加会员","type":"1","area":"700px,auto"}'>
+                        <button class="layui-btn layui-btn-small modal-catch" data-params='{"content":".add-subcat", "title":"添加顶级分类","type":"1"}'>
                             <i class="iconfont">&#xe649;</i> 添加
                         </button>
                     </div>
@@ -74,68 +58,31 @@
             </div>
         </div>
     </div>
-
     <div class="add-subcat">
-        <form id="form1" class="layui-form layui-form-pane" action="add-brand">
+        <form id="form1" class="layui-form layui-form-pane" action="add-cat">
             <div class="layui-form-item">
-                <label class="layui-form-label">姓名</label>
+                <label class="layui-form-label">权限名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="name" required jq-verify="required" jq-error="请输入姓名" jq-url="./php/check.php" placeholder="请输入姓名" autocomplete="off" class="layui-input ">
+                    <input type="text" name="title" required jq-verify="required" jq-error="请输入权限名称" placeholder="请输入权限名称" autocomplete="off" class="layui-input ">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">所属地区</label>
+                <label class="layui-form-label">对应的ACTION</label>
                 <div class="layui-input-inline">
-                    <select name="city" jq-verify="required" jq-error="请选择地区" lay-filter="verify">
-                        <option value=""></option>
-                        <option value="0">北京</option>
-                        <option value="1">上海</option>
-                        <option value="2">广州</option>
-                        <option value="3">深圳</option>
-                        <option value="4">杭州</option>
-                    </select>
+                    <input type="text" name="title" placeholder="对应的ACTION" autocomplete="off" class="layui-input ">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">上传头像</label>
-                <div class="layui-input-block">
-                    <input type="file" name="file" class="layui-upload-file">
-                    <input type="hidden" name="img" jq-verify="required" jq-error="请上传头像" error-id="img-error">
-                    <p id="img-error" class="error"></p>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">手机</label>
+                <label class="layui-form-label">附加条件</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="sorts" jq-verify="phone" jq-error="手机号码格式不对" placeholder="请输入手机号码" autocomplete="off" class="layui-input ">
+                    <input type="text" name="title" placeholder="附加条件" autocomplete="off" class="layui-input ">
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">邮箱</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="sorts" required jq-verify="email" jq-error="邮箱格式不对" placeholder="请输入邮箱" autocomplete="off" class="layui-input ">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">性别</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="sex" title="男" value="1" checked />
-                    <input type="radio" name="sex" title="女" value="0" />
-                    <input type="radio" name="sex" title="保密" value="2" />
-                </div>
-            </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label">状态</label>
                 <div class="layui-input-inline">
                     <input type="radio" name="status" title="启用" value="1" checked />
                     <input type="radio" name="status" title="禁用" value="0" />
-                </div>
-            </div>
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">备注</label>
-                <div class="layui-input-block">
-                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -146,7 +93,6 @@
             </div>
         </form>
     </div>
-
 </body>
 <script id="list-tpl" type="text/html" data-params='{"url":"./php/data.php","pageid":"#page"}'>
     <table id="example" class="layui-table lay-even">
@@ -154,12 +100,11 @@
             <tr>
                 <th width="30"><input type="checkbox" id="checkall" data-name="checkbox" lay-filter="check" lay-skin="primary"></th>
                 <th width="60">序号</th>
-                <th width="100">头像</th>
-                <th>姓名</th>
-                <th>手机</th>
-                <th width="70">性别</th>
-                <th width="80">审核</th>
-                <th width="142">操作</th>
+                <th>权限名称</th>
+                <th>对应的ACTION</th>
+                <th>附加条件</th>
+                <th width="80">状态</th>
+                <th width="240">操作</th>
             </tr>
         </thead>
         <tbody>
@@ -167,15 +112,15 @@
             <tr>
                 <td><input type="checkbox" name="checkbox" value="{{ item.id}}" lay-skin="primary"></td>
                 <td>{{ item.id}}</td>
-                <td>
-                    <div class="img"><img src="images/upload.jpg" alt="..." class="img-thumbnail"></div>
-                </td>
-                <td>张三</td>
-                <td>1591236597</td>
-                <td>男 </td>
+                <td>{{ strRepeat('&nbsp;&nbsp;',item.id)}} {{# if(item.id>1){ }} ├&nbsp; {{# } }} {{ item.title}}</td>
+                <td>/home/good/index </td>
+                <th>附加条件</th>
                 <td><input type="checkbox" name="switch" lay-skin="switch" lay-text="启用|禁用" {{#if (item.switch){ }}checked="checked" {{# } }} lay-filter="ajax" data-params='{"url":"./php/test.php","data":"id={{ item.id}}&name=paco"}'> </td>
                 <td>
-                    <button class="layui-btn layui-btn-mini modal-catch" data-params='{"content": ".add-subcat", "title": "编辑{{item.title}}","type":"1","data":"name={{ item.title}}&city=1&sorts=10&status=0&url=abc.html","area":"700px,auto"}'>
+                    <button class="layui-btn layui-btn-mini layui-btn-normal modal-catch" data-params='{"content":".add-subcat","area":"600px,300px","title":"添加{{ item.title}}的子分类","type":"1"}'>
+                        <i class="iconfont">&#xe649;</i>添加子项
+                    </button>
+                    <button class="layui-btn layui-btn-mini modal-catch" data-params='{"content": ".add-subcat","area":"600px,400px","title":"编辑{{ item.title}}分类","data":"pid=2&status=0&title=123","type":"1"}'>
                         <i class="iconfont">&#xe653;</i>编辑
                     </button>
                     <button class="layui-btn layui-btn-mini layui-btn-danger ajax" data-params='{"url": "./php/test.php","data":"id=1&name=ni"}'>
@@ -188,7 +133,7 @@
 
     </table>
 </script>
-<script src="js/layui/layui.js"></script>
+<script src="../js/layui/layui.js"></script>
 <script>
     layui.config({
         base: 'js/',
@@ -209,6 +154,14 @@
 </script>
 <script>
     layui.use('list');
+
+    function strRepeat(str, count) {
+        var ret = "";
+        for (var i = 0; i < count; i++) {
+            ret += str;
+        }
+        return ret;
+    }
 </script>
 
 </html>

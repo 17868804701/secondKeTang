@@ -33,20 +33,6 @@
           ]
         },
             {
-                "id": 2,
-                "url": "",
-                "name": "活动分类",
-                "iconfont": "&#xe631;",
-                "sub": [{
-                        "id":8,
-                        "url": "../html/activityType.html",
-                        "name": "活动类别设定",
-                        "iconfont": "&#xe61a;",
-                        "sub": []
-                    }
-                ]
-            },
-            {
                 "id": 3,
                 "url": "",
                 "name": "活动管理",
@@ -54,20 +40,24 @@
                 "sub": [
                   {
                     "id": 10,
-                    "url": "../html/actvityRelease.html",
+                    "url": "/jqadmin/html/actvityRelease.html",
                     "name": "活动发布",
                     "iconfont": "&#xe672;"
                   },
                   {
                     "id": 11,
-                    "url": "../html/actvityBaoming.html",
+                    "url": "/jqadmin/html/actvityBaoming.html",
                     "name": "活动报名",
                     "iconfont": "&#xe672;"
-                  },
-                  {
-                    "id": 12,
-                    "url": "",
-                    "name": "活动过程",
+                  },    {
+                    "id": 11,
+                    "url": "/jqadmin/html/activityShenhe.html",
+                    "name": "活动审核",
+                    "iconfont": "&#xe672;"
+                  },  {
+                    "id": 11,
+                    "url": "/jqadmin/html/activityType.html",
+                    "name": "活动类别设定",
                     "iconfont": "&#xe672;"
                   }
 
@@ -81,19 +71,26 @@
                 "sub": [
                   {
                         "id": 13,
-                        "url": "../html/apply.html",
+                        "url": "/jqadmin/html/apply.html",
                         "name": "申请学分",
                         "iconfont": "&#xe646;"
                   },
                   {
                     "id": 13,
-                    "url": "../html/apply-teacher.html",
-                    "name": "特殊申请(老师)",
+                    "url": "/jqadmin/html/xuefenShenhe.html",
+                    "name": "学分审核",
                     "iconfont": "&#xe646;"
                   },
                   {
+                    "id": 13,
+                    "url": "/jqadmin/html/apply-teacher.html",
+                    "name": "特殊申请(教师)",
+                    "iconfont": "&#xe646;"
+                  },
+
+                  {
                     "id": 15,
-                    "url": "../html/courseNum.html",
+                    "url": "/jqadmin/html/courseNum.html",
                     "name": "学分统计与预警",
                     "iconfont": "&#xe646;"
                   }
@@ -101,19 +98,26 @@
             },{
             "id": 1,
             "url": "",
-            "name": "信息统计",
+            "name": "学生信息管理",
             "iconfont": "&#xe613;",
             "sub": [
               {
                 "id": 5,
-                "url": "../html/selectInfo.html",
-                "name": "第二课堂活动信息查询统计",
+                "url": "/jqadmin/html/studentInfo.html",
+                "name": "学生信息管理",
                 "iconfont": "&#xe637;"
-              },
+              }
+            ]
+          },{
+            "id": 1,
+            "url": "",
+            "name": "第二课堂信息统计",
+            "iconfont": "&#xe613;",
+            "sub": [
               {
                 "id": 6,
-                "url": "../html/import.html",
-                "name": "第二课堂活动信息数据导出",
+                "url": "/jqadmin/html/import.html",
+                "name": "查询统计",
                 "iconfont": "&#xe637;"
               }
             ]

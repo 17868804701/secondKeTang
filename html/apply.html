@@ -37,13 +37,13 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">申请人</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="operator" readonly jq-verify="operator" class="layui-input" value="" placeholder="申请人" />
+                            <input type="text" name="operator"  jq-verify="operator" class="layui-input" value="" placeholder="申请人" />
                         </div>
 
                         <div class="layui-inline" style="margin-left: 13px">
                             <label class="layui-form-label">参考版本</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="version" readonly class="layui-input" value="" placeholder="参考版本" />
+                                <input type="text" name="version"  class="layui-input" value="" placeholder="参考版本" />
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,10 @@
                             <label class="layui-form-label">模块</label>
                             <div class="layui-input-inline">
                                 <select id="mkId" name="mkId" required lay-verify="required" jq-error="请输入模块" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/xmSelect","data":"","confirm":"true","loading":"false","complete":"initXm"}'>
-                                    <option value=""></option>
+                                    <option value="">选择活动模块</option>
+                                    <option value="1">基本素养</option>
+                                    <option value="2">就业创业</option>
+                                    <option value="3">学科竞赛</option>
                                 </select>
                             </div>
                         </div>
@@ -63,7 +66,10 @@
                             <label class="layui-form-label">项目</label>
                             <div class="layui-input-inline">
                                 <select id="xmId" name="xmId" required lay-verify="required" jq-error="请输入项目" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/jbSelect","data":"","confirm":"true","loading":"false","complete":"initJb"}'>
-                                    <option value=""></option>
+                                    <option value="">选择活动项目</option>
+                                    <option value="1">学科竞赛</option>
+                                    <option value="2">团队合作 </option>
+                                    <option value="3">学科竞赛</option>
                                 </select>
                             </div>
                         </div>
@@ -72,7 +78,10 @@
                             <label class="layui-form-label">级别</label>
                             <div class="layui-input-inline">
                                 <select id="jbId" name="jbId" required lay-verify="required" jq-error="请输入级别" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/xfSelect","data":"","confirm":"true","loading":"false","complete":"initXf"}'>
-                                    <option value=""></option>
+                                    <option value="">选择级别</option>
+                                    <option value="1">国家级一等</option>
+                                    <option value="2">省级</option>
+                                    <option value="3">校级</option>
                                 </select>
                             </div>
                         </div>
@@ -80,7 +89,10 @@
                             <label class="layui-form-label">要求</label>
                             <div class="layui-input-inline">
                                 <select id="jbId" name="jbId" required lay-verify="required" jq-error="请输入级别" lay-filter="ajax" data-params='{"url": "${contextPath}/flow/secClassRoom/xfSelect","data":"","confirm":"true","loading":"false","complete":"initXf"}'>
-                                    <option value=""></option>
+                                    <option value="">选择级别</option>
+                                    <option value="1">一等奖</option>
+                                    <option value="2">二等奖</option>
+                                    <option value="3">三等奖</option>
                                 </select>
                             </div>
                         </div>

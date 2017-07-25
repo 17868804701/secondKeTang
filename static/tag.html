@@ -11,10 +11,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <!-- load css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css?v=v3.3.7" media="all">
-    <link rel="stylesheet" type="text/css" href="css/font/iconfont.css?v=1.0.0" media="all">
-    <link rel="stylesheet" type="text/css" href="css/layui.css?v=1.0.9" media="all">
-    <link rel="stylesheet" type="text/css" href="css/main.css?v1.3.3" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.3.3" media="all">
 
 </head>
 
@@ -24,17 +24,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <!--头部搜索-->
                 <section class="panel panel-padding">
-                    <form class="layui-form" action="./php/data.php">
+                    <form class="layui-form" action="../php/data.php">
                         <div class="layui-form">
-
-                            <div class="layui-inline">
-                                <div class="layui-input-inline">
-                                    <input class="layui-input start-date" name="start_date" placeholder="入驻时间">
-                                </div>
-                                <div class="layui-input-inline">
-                                    <input class="layui-input end-date" name="end_date" placeholder="入驻时间">
-                                </div>
-                            </div>
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
                                     <input class="layui-input" name="keyword" placeholder="关键字">
@@ -53,17 +44,12 @@
                         <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=ni&checkbox=6,9,0&va=23"}'>
                             <i class="iconfont">&#xe626;</i> 删除
                         </button>
-                        <button class="layui-btn layui-btn-small layui-btn-normal ajax" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=hao&checkbox=6,9,0&va=23"}'>
-                            <i class="iconfont">&#xe63c;</i> 收件箱
+
+                        <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=hao&checkbox=6,9,0&va=23"}'>
+                            <i class="layui-icon">&#x1005;</i> 禁用
                         </button>
-                        <button class="layui-btn layui-btn-small layui-btn-normal ajax" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=hao&checkbox=6,9,0&va=23"}'>
-                            <i class="layui-icon">&#xe609;</i> 发件箱
-                        </button>
-                        <button class="layui-btn layui-btn-small layui-btn-normal ajax" data-name="checkbox" data-params='{"url": "./php/test.php","data":"id=1&name=hao&checkbox=6,9,0&va=23"}'>
-                            <i class="iconfont">&#xe64c;</i> 草稿箱
-                        </button>
-                        <button class="layui-btn layui-btn-small modal-catch" data-params='{"content":".add-subcat","area":"500px,480px", "title":"添加顶级分类","type":"1"}'>
-                            <i class="iconfont">&#xe649;</i> 发信息
+                        <button class="layui-btn layui-btn-small modal-catch" data-params='{"content": ".add-subcat", "title": "添加标签","type":"1"}'>
+                            <i class="iconfont">&#xe649;</i> 添加
                         </button>
                     </div>
                     <div id="list" class="layui-form"></div>
@@ -73,28 +59,18 @@
             </div>
         </div>
     </div>
-
     <div class="add-subcat">
-        <form id="form1" class="layui-form layui-form-pane" action="add-brand">
+        <form id="form1" class="layui-form layui-form-pane" action="add-cat">
             <div class="layui-form-item">
-                <label class="layui-form-label">品牌名称</label>
+                <label class="layui-form-label">标签名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" required jq-verify="required" jq-error="请输入品牌名称" placeholder="请输入品牌名称" autocomplete="off" class="layui-input ">
+                    <input type="text" name="tag" required jq-verify="required" jq-error="请输入标签名称" placeholder="请输入标签名称" autocomplete="off" class="layui-input ">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">上传图片</label>
-                <div class="layui-input-block">
-                    <input type="file" name="file" class="layui-upload-file">
-                    <input type="hidden" name="img" jq-verify="required" jq-error="请上传图片" error-id="img-error">
-                    <p id="img-error" class="error"></p>
-                </div>
-
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">排序</label>
+                <label class="layui-form-label">热度</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="sorts" required jq-verify="number" value="100" jq-error="排序必须为数字" placeholder="分类排序" autocomplete="off" class="layui-input ">
+                    <input type="text" name="title" required jq-verify="number" value="100" jq-error="标签热度必须为数字" placeholder="标签热度" autocomplete="off" class="layui-input ">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -112,17 +88,17 @@
             </div>
         </form>
     </div>
-
 </body>
 <script id="list-tpl" type="text/html" data-params='{"url":"./php/data.php","pageid":"#page"}'>
     <table id="example" class="layui-table lay-even">
         <thead>
             <tr>
-                <th <col width="30"><input type="checkbox" id="checkall" data-name="checkbox" lay-filter="check" lay-skin="primary"></th>
+                <th width="30"><input type="checkbox" id="checkall" data-name="checkbox" lay-filter="check" lay-skin="primary"></th>
                 <th width="60">序号</th>
-                <th>主题</th>
-                <th width="100">发件人</th>
-                <th width="70">操作</th>
+                <th>名称</th>
+                <th width="70">热度</th>
+                <th width="80">状态</th>
+                <th width="142">操作</th>
             </tr>
         </thead>
         <tbody>
@@ -130,10 +106,13 @@
             <tr>
                 <td><input type="checkbox" name="checkbox" value="{{ item.id}}" lay-skin="primary"></td>
                 <td>{{ item.id}}</td>
-
-                <td><i class="iconfont color-yellow-green">&#xe63c;</i> {{ item.title}} </td>
-                <td> 张三</td>
+                <td>{{ item.title}}</td>
+                <td><input type="text" class="layui-input ajax-blur" name="order" value="{{ item.id}}" data-params='{"url":"./php/test.php","data":"id=1&name=paco"}'> </td>
+                <td><input type="checkbox" name="switch" lay-skin="switch" lay-text="启用|禁用" {{#if (item.switch){ }}checked="checked" {{# } }} lay-filter="ajax" data-params='{"url":"./php/test.php","data":"id={{ item.id}}&name=paco"}'> </td>
                 <td>
+                    <button class="layui-btn layui-btn-mini modal-catch" data-params='{"content": ".add-subcat","area":"600px,300px","title":"编辑{{ item.title}}分类","data":"pid=2","type":"1"}'>
+                        <i class="iconfont">&#xe653;</i>编辑
+                    </button>
                     <button class="layui-btn layui-btn-mini layui-btn-danger ajax" data-params='{"url": "./php/test.php","data":"id=1&name=ni"}'>
                         <i class="iconfont">&#xe626;</i>删除
                     </button></td>
@@ -144,7 +123,7 @@
 
     </table>
 </script>
-<script src="js/layui/layui.js"></script>
+<script src="../js/layui/layui.js"></script>
 <script>
     layui.config({
         base: 'js/',

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动类别设定</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.0" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.3.3" media="all">
+    <style>
+        label{
+            color: #333;
+        }
+        /*body{*/
+            /*height: 634px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="container-fluid larry-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+            <!--列表-->
+            <section class="panel panel-padding">
+                <form class="layui-form" action="${contextPath}/flow/secClassRoom/audition">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input class="layui-input" name="creator" value="" placeholder="申请人">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button lay-submit class="layui-btn" lay-filter="search">查找</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel panel-padding">
+                <div class="group-button">
+                    <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-name="checkbox" data-params='{"url": "${contextPath}/flow/secClassRoom/gobatch","method":"post","complete":"bohui"}'>
+                        <i class="iconfont">&#xe603;</i> 驳回
+                    </button>
+                    <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-name="checkbox" data-params='{"url": "${contextPath}/flow/secClassRoom/gobatch","method":"post","complete":"agree"}'>
+                        <i class="layui-icon">&#x1005;</i> 同意
+                    </button>
+                </div>
+                <div id="list" class="layui-form">
+                    <table id="example" class="layui-table lay-even" data-name="taskList"  data-tplid="list-tpl">
+                        <thead>
+                        <tr>
+                            <th width="30"><input type="checkbox" id="checkall" data-name="checkbox" lay-filter="check" lay-skin="primary"></th>
+
+                            <th>申请人</th>
+                            <th>学号</th>
+                            <th>流程状态</th>
+                            <th>申请描述</th>
+                            <th width="142">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="checkbox" value="{{ item.orderId}}" lay-skin="primary"></td>
+
+                            <td>黄森</td>
+                            <td>14610801152311</td>
+                            <td>已申请</td>
+                            <td>参加素质拓展活动</td>
+                            <td>
+                                <button class="layui-btn layui-btn-mini modal-iframe" data-params='{"content": "${contextPath}{{item.actionUrl}}?processId={{item.processId }}&taskId={{item.taskId}}&orderId={{item.orderId}}", "title": "处理","full":"true"}'>
+                                    <i class="iconfont">&#xe653;</i>处理
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkbox" value="{{ item.orderId}}" lay-skin="primary"></td>
+
+                            <td>代江平</td>
+                            <td>14610801152311</td>
+                            <td>已申请</td>
+                            <td>参加素质拓展活动</td>
+                            <td>
+                                <button class="layui-btn layui-btn-mini modal-iframe" data-params='{"content": "${contextPath}{{item.actionUrl}}?processId={{item.processId }}&taskId={{item.taskId}}&orderId={{item.orderId}}", "title": "处理","full":"true"}'>
+                                    <i class="iconfont">&#xe653;</i>处理
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkbox" value="{{ item.orderId}}" lay-skin="primary"></td>
+
+                            <td>张三</td>
+                            <td>14610801152311</td>
+                            <td>已申请</td>
+                            <td>参加素质拓展活动</td>
+                            <td>
+                                <button class="layui-btn layui-btn-mini modal-iframe" data-params='{"content": "${contextPath}{{item.actionUrl}}?processId={{item.processId }}&taskId={{item.taskId}}&orderId={{item.orderId}}", "title": "处理","full":"true"}'>
+                                    <i class="iconfont">&#xe653;</i>处理
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+                <div class="text-right" id="page"></div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form()
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+
+    });
+</script>
+</html>
